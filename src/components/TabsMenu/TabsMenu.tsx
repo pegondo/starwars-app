@@ -36,13 +36,17 @@ const TabsMenu = ({ elements }: Props) => {
             aria-label="basic tabs example"
             variant="fullWidth"
           >
-            {elements.map(({ label }) => (
-              <Tab label={label} data-testid="tabs-menu-label" />
+            {elements.map(({ label }, index) => (
+              <Tab
+                label={label}
+                key={`tab-${index}`}
+                data-testid="tabs-menu-label"
+              />
             ))}
           </Tabs>
         </Box>
         {elements.map(({ content }, index) => (
-          <div data-testid="tabs-menu-content">
+          <div key={`tab-content-${index}`} data-testid="tabs-menu-content">
             {index === value && content}
           </div>
         ))}

@@ -158,22 +158,20 @@ const Table = ({ title, count, rows, headers, onParamsChange }: Props) => {
               onRequestSort={handleRequestSort}
             />
             <TableBody>
-              {rows.map((row, index) => (
+              {rows.map((row, rowIndex) => (
                 <TableRow
                   hover
                   tabIndex={-1}
-                  key={`row-${index}`}
+                  key={`row-${rowIndex}`}
                   sx={{ cursor: "pointer" }}
                   onClick={() => handleClick(row.url)}
                   title="Click to navigate to the resource in SWAPI"
                 >
-                  {headers.map((header) => {
-                    return (
-                      <TableCell align="left" key={`cell-${index}`}>
-                        {formatField(row[header.field], header.format)}
-                      </TableCell>
-                    );
-                  })}
+                  {headers.map((header, headerIndex) => (
+                    <TableCell align="left" key={`cell-${headerIndex}`}>
+                      {formatField(row[header.field], header.format)}
+                    </TableCell>
+                  ))}
                 </TableRow>
               ))}
             </TableBody>
