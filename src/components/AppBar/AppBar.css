@@ -1,0 +1,8 @@
+.root {
+  flex-grow: 1px;
+  margin-bottom: 2px;
+}
+
+.text {
+  flex-grow: 1;
+}
