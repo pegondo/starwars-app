@@ -7,12 +7,10 @@ Starwars app is a simple React + TS + Vite app that allows you to enjoy explorin
 Starwars app provides two tables to view the people and the planets collections offered by [the starwars-service](https://github.com/pegondo/starwars-service). These tables have facilities to:
 
 - Navigate the information in a paginated format.
-
 - Search for elements based on their name.
-
 - Sort the elements based on their name or creation date in ascending or descending order.
 
-With all these facilities managed in the service, not in the client.
+With all these facilities managed in by service, not the client.
 
 ## Run the application
 
