@@ -3,9 +3,10 @@ import TableHead, { Props } from "./TableHead";
 import { Header } from "../Table";
 import { SUPPORTED_SORT_FIELDS } from "../../../models/parameters";
 import { Resource } from "../../../models/Resource";
+import { Person } from "../../../models/Person";
 
 describe("<TableHead />", () => {
-  const setup = (props: Props) => {
+  const setup = (props: Props<Person>) => {
     const element = render(<TableHead {...props} />);
     const root = element.getByTestId("table-head");
     const cells = element.queryAllByTestId("table-head-cell");
@@ -24,7 +25,7 @@ describe("<TableHead />", () => {
   });
 
   it("should render all the cells", () => {
-    const headers: Header[] = [
+    const headers: Header<Person>[] = [
       {
         field: "name",
         label: "<label-1>",
@@ -49,7 +50,7 @@ describe("<TableHead />", () => {
 
   it("should render the header labels with the right content", () => {
     const headerLabels = ["<label-1>", "<label-2>", "<label-3>"];
-    const headers: Header[] = headerLabels.map((label) => ({
+    const headers: Header<Person>[] = headerLabels.map((label) => ({
       field: "name",
       label,
       format: "string",
@@ -70,7 +71,7 @@ describe("<TableHead />", () => {
   it("should call onRequestSort when clicking a column that supports sorting", () => {
     const onRequestSortMock = jest.fn();
     const field = SUPPORTED_SORT_FIELDS[0] as keyof Resource;
-    const componentHeaders: Header[] = [
+    const componentHeaders: Header<Person>[] = [
       {
         field,
         label: "<label-1>",
@@ -96,7 +97,7 @@ describe("<TableHead />", () => {
   it("should not call onRequestSort when clicking a column that doesn't supports sorting", () => {
     const onRequestSortMock = jest.fn();
     const field = "edited";
-    const componentHeaders: Header[] = [
+    const componentHeaders: Header<Person>[] = [
       {
         field,
         label: "<label-1>",

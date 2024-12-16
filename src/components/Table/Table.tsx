@@ -29,8 +29,8 @@ const DEFAULT_NUM_ROWS_PER_PAGE = 15;
 type HeaderFormat = "string" | "date";
 
 /** Represents a table header. */
-export interface Header {
-  field: keyof Resource;
+export interface Header<T extends Resource> {
+  field: keyof T;
   label: string;
   format: HeaderFormat;
 }
@@ -42,11 +42,15 @@ export interface Header {
  * @param format - The format to use.
  * @returns The field formated or `undefined` if the formatting isn't possible.
  */
-const formatField = (field: Resource[keyof Resource], format: HeaderFormat) => {
+const formatField = <T extends Resource>(
+  field: T[keyof T],
+  format: HeaderFormat
+) => {
   if (field === undefined) return undefined;
   switch (format) {
     case "date":
-      return new Date(field).toDateString();
+      // The cast is safe here because we know it's a string with date format.
+      return new Date(field as string).toDateString();
     case "string":
       return field as string;
     default:
@@ -80,7 +84,7 @@ const getSortCriteria = (
 };
 
 /** An interface that represents the properties of the table. */
-interface Props {
+interface Props<T extends Resource> {
   /** The title of the table. */
   title: string;
   /**
@@ -90,9 +94,9 @@ interface Props {
    */
   count: number;
   /** The list of resources to render. */
-  rows: Resource[];
+  rows: T[];
   /** The headers for the elements to use in the table. */
-  headers: Header[];
+  headers: Header<T>[];
   /**
    * Callback for when there is a change in the table parameters. This includes
    * sorting, searching and changes in the pagination settings.
@@ -101,7 +105,13 @@ interface Props {
 }
 
 /** A component that renders a table to visualize and manage a list of Resources. */
-const Table = ({ title, count, rows, headers, onParamsChange }: Props) => {
+const Table = <T extends Resource>({
+  title,
+  count,
+  rows,
+  headers,
+  onParamsChange,
+}: Props<T>) => {
   const [sortCriteria, setSortCriteria] = useState<SortCriteria>();
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(DEFAULT_NUM_ROWS_PER_PAGE);

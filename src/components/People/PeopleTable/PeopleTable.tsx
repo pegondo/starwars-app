@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Person } from "../../../models/People";
+import { Person } from "../../../models/Person";
 import useService from "../../../api/useService/useService";
 import { PEOPLE_ENDPOINT } from "../../../api/endpoints";
 import ErrorDialog from "../../ErrorDialog/ErrorDialog";
@@ -8,7 +8,7 @@ import { Params } from "../../../models/parameters";
 import Table, { Header } from "../../Table/Table";
 
 /** A list with the table headers of the people properties. */
-const PEOPLE_HEADER: Header[] = [
+const PEOPLE_HEADER: Header<Person>[] = [
   { field: "name", label: "Name", format: "string" },
   { field: "birth_year", label: "Birth year", format: "string" },
   { field: "eye_color", label: "Eye color", format: "string" },

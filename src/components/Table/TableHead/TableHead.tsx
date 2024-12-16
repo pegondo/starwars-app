@@ -6,9 +6,9 @@ import { Header } from "../Table";
 import { Box, TableCell, TableRow, TableSortLabel } from "@mui/material";
 
 /** An interface that represents the properties of the TableHead component. */
-export interface Props {
+export interface Props<T extends Resource> {
   /** The list of headers to render. */
-  headers: Header[];
+  headers: Header<T>[];
   /** Callback called when a header that supports sorting is clicked. */
   onRequestSort: (property: keyof Resource) => void;
   /** The current sort criteria. */
@@ -21,7 +21,7 @@ const TableNoSortLabel = ({ children }: { children: JSX.Element }) => (
 );
 
 /** A component to render the table head. */
-const TableHead = (props: Props) => {
+const TableHead = <T extends Resource>(props: Props<T>) => {
   const { sortCriteria, onRequestSort, headers } = props;
   const createSortHandler =
     (property: keyof Resource, supportsSort: boolean) => () => {
@@ -51,7 +51,10 @@ const TableHead = (props: Props) => {
                     ? sortCriteria?.order
                     : "asc"
                 }
-                onClick={createSortHandler(header.field, supportsSort)}
+                onClick={createSortHandler(
+                  header.field as keyof Resource,
+                  supportsSort
+                )}
                 data-testid="table-head-header"
               >
                 <strong data-testid="table-head-label">{header.label}</strong>

@@ -24,8 +24,8 @@ export const SUPPORTED_SORT_FIELDS = ["name", "created"];
  * @returns The given string as a `SortField` if it supports sorting and
  * `undefined` otherwise.
  */
-export const stringToSortField = (str: string) => {
-  if (!SUPPORTED_SORT_FIELDS.includes(str)) return undefined;
+export const stringToSortField = <T>(str: keyof T) => {
+  if (!SUPPORTED_SORT_FIELDS.includes(str as string)) return undefined;
   return str as SortField;
 };
 

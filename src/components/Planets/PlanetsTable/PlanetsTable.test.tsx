@@ -1,23 +1,23 @@
 import { render } from "@testing-library/react";
-import PeopleTable from "./PeopleTable";
 import { ErrorResponse } from "../../../api/error";
 
 // Mock the Table component
 import "../../Table/Table";
 jest.mock("../../Table/Table");
 
-// Mock the people endpoint so the test doesn't access import.meta.env
+// Mock the planets endpoint so the test doesn't access import.meta.env
 import "../../../api/endpoints";
 jest.mock("../../../api/endpoints", () => ({
-  PEOPLE_ENDPOINT: "<people-endpoint>",
+  PLANETS_ENDPOINT: "<planets-endpoint>",
 }));
 
 // Mock useService
 import useService from "../../../api/useService/useService";
+import PlanetsTable from "./PlanetsTable";
 jest.mock("../../../api/useService/useService");
 const useServiceMock = useService as jest.Mock;
 
-describe("<PeopleTable />", () => {
+describe("<PlanetsTable />", () => {
   const mockServiceResponse = <T,>(
     successResponse:
       | {
@@ -37,10 +37,10 @@ describe("<PeopleTable />", () => {
   };
 
   const setup = () => {
-    const element = render(<PeopleTable />);
-    const spinner = element.queryByTestId("people-table-spinner");
-    const errorDialog = element.queryByTestId("people-table-error-dialog");
-    const table = element.queryByTestId("people-table-table");
+    const element = render(<PlanetsTable />);
+    const spinner = element.queryByTestId("planets-table-spinner");
+    const errorDialog = element.queryByTestId("planets-table-error-dialog");
+    const table = element.queryByTestId("planets-table-table");
     return { spinner, errorDialog, table };
   };
 
