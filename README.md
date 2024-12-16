@@ -18,7 +18,14 @@ With all these facilities managed in the service, not in the client.
 
 For the application to run correctly, you must first start the Starwars service. [Here](https://github.com/pegondo/starwars-service?tab=readme-ov-file#run-the-service)'s a guide on how to do so.
 
-There are three ways or running this application.
+Then, you have to clone this repository:
+
+```bash
+git clone https://github.com/pegondo/starwars-app.git
+cd starwars-app
+```
+
+Once you have done this, there are three ways or running this application.
 
 ### Run the application in dev mode
 
