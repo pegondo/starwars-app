@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: ..
+      dockerfile: ./docker/Dockerfile
+    image: github.com/pegondo/starwars-app:latest
+    environment:
+      - VITE_SERVICE_URL=${VITE_SERVICE_URL}
+    ports:
+      - "6969:6969"

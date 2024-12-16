@@ -1,4 +1,3 @@
-import React from "react";
 import AppBar from "./components/AppBar/AppBar";
 import TabsMenu from "./components/TabsMenu/TabsMenu";
 import PeopleTable from "./components/People/PeopleTable/PeopleTable";
@@ -10,15 +9,13 @@ const APP_TABS = [
   { label: "planets", content: <div>Planets</div> },
 ];
 
-const App = () => {
-  return (
-    <Box>
-      <AppBar header="Star Wars app" />
-      <Box sx={{ width: "100%" }}>
-        <TabsMenu elements={APP_TABS} />
-      </Box>
+const App = () => (
+  <Box>
+    <AppBar header="Star Wars app" />
+    <Box sx={{ width: "100%" }}>
+      <TabsMenu elements={APP_TABS} />
     </Box>
-  );
-};
+  </Box>
+);
 
 export default App;

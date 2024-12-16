@@ -46,7 +46,7 @@ const formatField = (field: Resource[keyof Resource], format: HeaderFormat) => {
   if (field === undefined) return undefined;
   switch (format) {
     case "date":
-      return (field as Date).toDateString();
+      return new Date(field).toDateString();
     case "string":
       return field as string;
     default:

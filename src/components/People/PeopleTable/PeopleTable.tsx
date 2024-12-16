@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Person } from "../../../models/People";
 import useService from "../../../api/useService/useService";
 import { PEOPLE_ENDPOINT } from "../../../api/endpoints";
