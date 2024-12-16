@@ -9,18 +9,17 @@ import { PLANETS_ENDPOINT } from "../../../api/endpoints";
 
 /** A list with the table headers of the planet properties. */
 const PLANETS_HEADER: Header<Planet>[] = [
-  { field: "name", label: "name", format: "string" },
-  { field: "diameter", label: "diameter", format: "string" },
-  { field: "rotation_period", label: "rotation_period", format: "string" },
-  { field: "orbital_period", label: "orbital_period", format: "string" },
-  { field: "gravity", label: "gravity", format: "string" },
-  { field: "population", label: "population", format: "string" },
-  { field: "climate", label: "climate", format: "string" },
-  { field: "terrain", label: "terrain", format: "string" },
-  { field: "surface_water", label: "surface_water", format: "string" },
-  { field: "url", label: "url", format: "string" },
-  { field: "created", label: "created", format: "string" },
-  { field: "edited", label: "edited", format: "string" },
+  { field: "name", label: "Name", format: "string" },
+  { field: "diameter", label: "Diameter", format: "string" },
+  { field: "rotation_period", label: "Rotation period", format: "string" },
+  { field: "orbital_period", label: "Orbital period", format: "string" },
+  { field: "gravity", label: "Gravity", format: "string" },
+  { field: "population", label: "Population", format: "string" },
+  { field: "climate", label: "Climate", format: "string" },
+  { field: "terrain", label: "Terrain", format: "string" },
+  { field: "surface_water", label: "Surface water", format: "string" },
+  { field: "created", label: "Creation date", format: "date" },
+  { field: "edited", label: "Edit date", format: "date" },
 ];
 
 /**

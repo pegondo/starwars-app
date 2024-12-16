@@ -178,7 +178,11 @@ const Table = <T extends Resource>({
                   title="Click to navigate to the resource in SWAPI"
                 >
                   {headers.map((header, headerIndex) => (
-                    <TableCell align="left" key={`cell-${headerIndex}`}>
+                    <TableCell
+                      align="left"
+                      key={`cell-${headerIndex}`}
+                      data-testid={`table-cell-${header.field as string}`}
+                    >
                       {formatField(row[header.field], header.format)}
                     </TableCell>
                   ))}
